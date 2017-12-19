@@ -1,2 +1,3 @@
-# custom-metrics
-Example of producer and consumer of custom metrics in StackDriver
+# custom stackdriver metrics
+
+> Personal example project, does not represent Google

@@ -1,0 +1,3 @@
+bash ./build
+gcloud container builds submit --tag gcr.io/stackdriver-partner-lab/custom-metrics:0.1.1 .
+rm ./custom-metrics

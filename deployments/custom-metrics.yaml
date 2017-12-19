@@ -1,0 +1,36 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: custom-metrics
+  name: custom-metrics
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: custom-metrics
+      name: custom-metrics
+    spec:
+      containers:
+        - name: custom-metrics
+          image: gcr.io/stackdriver-partner-lab/custom-metrics:0.1.2
+          imagePullPolicy: Always
+          env:
+            - name: GCLOUD_PROJECT
+              valueFrom:
+                secretKeyRef:
+                  name: project-id
+                  key: GCLOUD_PROJECT
+          volumeMounts:
+            - name: "service-account"
+              mountPath: "/var/run/secret/cloud.google.com"
+            - name: "certs"
+              mountPath: "/etc/ssl/certs"
+      volumes:
+        - name: "service-account"
+          secret:
+            secretName: "producer-sa"
+        - name: "certs"
+          hostPath:
+            path: "/etc/ssl/certs"
