@@ -67,8 +67,7 @@ Besides generating nice charts, the StackDriver data is also actionable. You can
 
 Simply define a conditions that identify an unhealthy state for a resource or a group of resources, (in our case the custom metric), and create/define notification target which will be notified to let you know when the resource is unhealthy.
 
-![stackdriver mobile](/../master/images/mobile.png?raw=true "stackdriver mobile")
-<!-- .element height="50%" width="50%" -->
+![stackdriver mobile](/../master/images/mobile.png?raw=true&s=200 "stackdriver mobile")
 
 The one notification target I “enjoy” the most is the [Cloud Console Mobile App](https://cloud.google.com/console-app/) which is available for both Android and iOS. Using the mobile app you can monitor your GCP Console resources and Stackdriver information. 
 
