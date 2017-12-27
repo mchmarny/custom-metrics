@@ -54,15 +54,23 @@ if err := monitorClient.CreateTimeSeries(appContext, tsRequest); err != nil {
 The complete sample of code for the producer along with Dockerfile to build and publish into your Kubernetes cluster  is available in this GitHub [repository](https://github.com/mchmarny/custom-metrics). 
 
 ### Monitoring (Dashboard)
-The quickest way to inspect your newly submitted metrics is the StackDriver dashboard. Simply add new chart using the “Custom Metrics” resource type. 
+The quickest way to inspect your newly submitted metrics is the StackDriver dashboard. Simply add new chart using the “Custom Metrics” resource type.
+
+![stackdriver dashbaord](/../master/images/mon-dash.png?raw=true "stackdriver dashbaord")
 
 Once saved this custom metrics appear as a chart. If you have not chosen to aggregate the metric data, each source will be represented individually. 
+
+![stackdriver chart](/../master/images/mon-dash2.png?raw=true "stackdriver chart")
 
 ### Incident Management 
 Besides generating nice charts, the StackDriver data is also actionable. You can create [notification policy](https://cloud.google.com/monitoring/alerts/) with number of common incident management [target options](https://cloud.google.com/monitoring/support/notification-options) (e.g. PagerDuty, SMS, or Slack) as well as any publically accessible Webhook. 
 
 Simply define a conditions that identify an unhealthy state for a resource or a group of resources, (in our case the custom metric), and create/define notification target which will be notified to let you know when the resource is unhealthy.
 
+<img src="/../master/images/mobile.png?raw=true" width="385" height="492" alt="stackdriver mobile">
+
 The one notification target I “enjoy” the most is the [Cloud Console Mobile App](https://cloud.google.com/console-app/) which is available for both Android and iOS. Using the mobile app you can monitor your GCP Console resources and Stackdriver information. 
+
+
 
 
