@@ -12,11 +12,10 @@ const (
 	maxMetricVal     = 100
 )
 
-func provide(ch chan<- int64) {
+func provide(d time.Duration, ch chan<- int64) {
 
-	//TODO: Parametirize
-	frequency := 1000 * time.Millisecond
-	ticker := time.NewTicker(frequency)
+	log.Printf("Frequency: %v", d)
+	ticker := time.NewTicker(d)
 	for t := range ticker.C {
 		m := getMetric()
 		log.Printf("Metric %v - %v", t, m)

@@ -6,6 +6,7 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
+	"time"
 
 	"golang.org/x/net/context"
 )
@@ -19,14 +20,16 @@ var (
 	appContext context.Context
 
 	// google
-	projectID string
-	sourceID  string
+	projectID         string
+	sourceID          string
+	frequencyInMilSec int
 )
 
 func main() {
 
 	// FLAGS
 	flag.StringVar(&projectID, "project", os.Getenv("GCLOUD_PROJECT"), "GCP Project ID")
+	flag.IntVar(&frequencyInMilSec, "frequency", 1000, "Duration in milliseconds")
 	flag.Parse()
 
 	if projectID == "" {
@@ -41,6 +44,10 @@ func main() {
 	}
 	sourceID = name
 	// END HOST
+
+	// FREQUENCY
+	frequency := time.Duration(frequencyInMilSec) * time.Millisecond
+	// END FREQUENCY
 
 	// CONTEXT
 	ctx, cancel := context.WithCancel(context.Background())
@@ -61,7 +68,7 @@ func main() {
 	initPublisher()
 
 	// start provider
-	go provide(messages)
+	go provide(frequency, messages)
 
 	// LOOP
 	for {
