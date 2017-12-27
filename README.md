@@ -1,7 +1,7 @@
 # How to use Stackdriver to monitor custom application metrics
 Stackdriver has thousands of build-in metrics to monitor everything from Kubernetes cluster to database or storage. Stackdriver is also not limited to Google Cloud Platform (GCP). Stackdriver has  support for number of AWS-native services and  extensive log monitoring capabilities for a wide array of open source software packages, whether they run in the Cloud or in on premises. 
 
-## Custom Metrics
+### Custom Metrics
 When developing a solution though, in addition to monitoring the infrastructure and software , you may also want to monitor internal events. Throughput of specific types of events, transaction duration or a total end-to-end pipeline performance may also be useful.
 
 To enable this kind of granular monitoring, Stackdriver supports [custom metrics](https://cloud.google.com/monitoring/custom-metrics/creating-metrics). While it’s possible to write those metrics directly against Stackdriver [metricDescriptors API](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors), it’s much easier to use the native [Client libraries](https://cloud.google.com/logging/docs/reference/libraries) provided by Stackdriver in many development languages (C#, GO, Java, Node.js, PHP, Python, Ruby).
